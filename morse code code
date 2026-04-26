@@ -1,0 +1,33 @@
+import pygame 
+pygame.init()
+
+screen = pygame.display.set_mode((700, 600)) 
+font = pygame.font.SysFont("Cascadia Code ExtraLight", 70, False)
+screen.fill("grey")
+mouse = pygame.mouse.get_pos()
+
+def draw_text(text, font, text_col, x, y): # just to write stuff
+    img = font.render(text, True, text_col)
+    screen.blit(img, (x, y)) 
+
+def buttons(x,y, text, lenght, height, button_normal, button_hover, button_pressed):
+    if mouse[0] > x and mouse [0] < x+lenght and mouse [1] > x and mouse [1] < y+height:
+        pygame.draw.rect(screen, button_normal, (x, y, lenght, height))
+    elif
+
+
+#def mainMenu(): #menu
+run = True
+while run == True:
+    draw_text('Learn Morse Code!' , font, (100, 0, 100), 120, 50)
+
+    pygame.draw.circle(screen, (0, 0, 0), (700, 600), 170)
+    pygame.draw.rect(screen, (0, 0, 0), (170, 180, 350, 80), border_radius = 20)
+    pygame.draw.rect(screen, (0, 0, 0), (170, 270, 350, 80), border_radius = 20)
+    pygame.draw.rect(screen, (0, 0, 0), (170, 360, 350, 80), border_radius = 20)
+
+    for event in pygame.event.get(): 
+        if event.type == pygame.QUIT:
+            run = False 
+    pygame.display.update()  
+pygame.quit()   
