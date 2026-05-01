@@ -2,7 +2,7 @@ import pygame
 pygame.init()
 
 screen = pygame.display.set_mode((700, 600)) 
-font = pygame.font.SysFont('Constantia', 30)
+font = pygame.font.SysFont('Constantia', 30, False)
 pygame.display.set_caption('Learn morse code!')
 screen.fill("grey")
 
@@ -29,3 +29,4 @@ def menu():
            pygame.display.update()  
   pygame.quit()   
 menu()
+

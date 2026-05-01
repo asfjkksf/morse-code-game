@@ -4,19 +4,19 @@ pygame.init()
 
 
 screen = pygame.display.set_mode((700, 600))
+pygame.display.set_caption('Learn morse code!')
 font = pygame.font.SysFont('Constantia', 30)
 screen.fill("grey")
-font_uh = pygame.font.SysFont("Cascadia Code ExtraLight", 70, False)
+font_two = pygame.font.SysFont("Cascadia Code ExtraLight", 70, False)
+picture_alphabet = pygame.image.load('picture_alphabet.jpg')
 
-def draw_text(text, font_uh, text_col, x, y): # just to write stuff
+def draw_text(text, font, text_col, x, y): 
     img = font.render(text, True, text_col)
     screen.blit(img, (x, y)) 
 
 
 clicked = False
-
-
-class button():
+class button(): 
 		
 	button_col = (255, 245, 206)
 	hover_col = (255, 225, 255)
@@ -48,30 +48,31 @@ class button():
 			pygame.draw.rect(screen, self.button_col, button_rect)
 		return action
 
-
-
 flashcards = button(170, 180)
 multipleChoice = button(170, 270)
 typingTest = button(170, 360)
 alphabet = button(600, 500)
 
-def mainMenu():
-  run = True
-  while run:
-   # draw_text('Learn Morse Code!' , font, (100, 0, 100), 120, 50)
 
-	if flashcards.draw_button():
+run = True
+while run:
+	screen.fill('grey')
+    # draw_text('Learn Morse Code!' , font_two, (100, 0, 100), 120, 50) # i dont understand why it doesnt work with this 
+
+	if flashcards.draw_button(): 
 		print('Flashcards')
 	if multipleChoice.draw_button():
 		print('Multiple Choice')
 	if alphabet.draw_button():
-	    print('Alphabet')
+		print('Alphabet')
+		screen.blit(picture_alphabet,(50, 50)) # i want this to stay for more than a millisecond 
 	if typingTest.draw_button():
-	    print('Typing Test')
- 
-	
-	    for event in pygame.event.get():
-		    if event.type == pygame.QUIT:
-		    	run = False	
-	         pygame.display.update()
+		print('Typing Test')
+		
+
+
+	for event in pygame.event.get():
+		if event.type == pygame.QUIT: 
+			run = False	              
+	pygame.display.update()
 pygame.quit()
